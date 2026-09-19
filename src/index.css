@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-charge text-paper;
+  }
+  :focus-visible {
+    outline: 2px solid #0047ff;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .rule {
+    @apply h-px w-full bg-ink/10;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-charge px-7 py-3.5 text-sm font-bold tracking-[0.08em] uppercase text-paper transition duration-200 hover:bg-chargeDeep disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-ink/15 px-7 py-3 text-sm font-bold tracking-[0.08em] uppercase text-ink transition duration-200 hover:border-charge hover:text-charge;
+  }
+  .eyebrow {
+    @apply text-[11px] font-bold tracking-[0.14em] uppercase text-chargeDeep;
+  }
+  /* Heavy condensed-feel headline. Archivo Black ships one weight, so no font-weight here. */
+  .display {
+    @apply font-display uppercase leading-[0.95] tracking-[-0.01em];
+  }
+  .input {
+    @apply w-full rounded-sm border border-ink/20 bg-paper px-3 py-2.5 text-sm outline-none transition placeholder:text-ink/60 focus:border-charge;
+  }
+  .chip {
+    @apply rounded-sm border border-ink/20 px-4 py-2 text-xs font-semibold tracking-[0.06em] uppercase transition hover:border-charge;
+  }
+  .chip-on {
+    @apply border-charge bg-charge text-paper;
+  }
+  /* flame always carries ink text: white on flame is 3.6:1 and fails AA. */
+  .badge-sale {
+    @apply inline-flex items-center rounded-sm bg-flame px-2.5 py-1 text-[11px] font-bold tracking-[0.08em] uppercase text-ink;
+  }
+  .badge-stat {
+    @apply inline-flex items-center rounded-sm bg-ink px-2.5 py-1 text-[11px] font-bold tracking-[0.08em] uppercase text-paper;
+  }
+  .badge-stock-in {
+    @apply inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.1em] uppercase text-success;
+  }
+  .badge-stock-low {
+    @apply inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.1em] uppercase text-warning;
+  }
+  .badge-stock-out {
+    @apply inline-flex items-center gap-1.5 text-[11px] font-bold tracking-[0.1em] uppercase text-ink/60;
+  }
+  .alert-error {
+    @apply rounded-sm border-l-4 border-danger bg-danger/5 px-4 py-3 text-sm text-danger;
+  }
+  .alert-success {
+    @apply rounded-sm border-l-4 border-success bg-success/5 px-4 py-3 text-sm text-success;
+  }
+  .stat {
+    @apply font-display text-3xl leading-none tracking-[-0.02em] text-ink;
+  }
+  .stat-label {
+    @apply mt-2 block text-[10px] font-bold tracking-[0.12em] uppercase text-ink/60;
+  }
+}
+
+.admin-ui .btn-primary {
+  @apply bg-charge text-paper hover:bg-chargeLight hover:text-ink;
+}
+.admin-ui .btn-ghost {
+  @apply border-paper/30 text-paper hover:border-chargeLight hover:text-chargeLight;
+}
+.admin-ui .chip {
+  @apply border-paper/20 text-paper/80 hover:border-chargeLight;
+}
+.admin-ui .input {
+  @apply border-paper/25 bg-transparent text-paper placeholder:text-paper/60;
+}
+.admin-ui .eyebrow {
+  @apply text-chargeLight;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
